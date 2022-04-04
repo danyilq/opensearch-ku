@@ -4,13 +4,13 @@ steps:
       - CLOUDSDK_COMPUTE_REGION=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=cluster-2
       - GCLOUD_PROJECT=open-search-345216
-    args: ['helm', 'repo', 'add', 'opensearch', 'https://opensearch-project.github.io/helm-charts/']
+    args: ['repo', 'add', 'opensearch', 'https://opensearch-project.github.io/helm-charts/']
   - name: 'gcr.io/open-search-345216/helm'
     env:
       - CLOUDSDK_COMPUTE_REGION=us-central1-c
       - CLOUDSDK_CONTAINER_CLUSTER=cluster-2
       - GCLOUD_PROJECT=open-search-345216
-    args: ['helm', 'repo', 'update']
+    args: ['repo', 'update']
   - name: 'gcr.io/open-search-345216/helm'
     env:
       - CLOUDSDK_COMPUTE_REGION=us-central1-c
