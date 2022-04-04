@@ -11,9 +11,8 @@ masterService: "opensearch-cluster-master"
 roles:
   - ingest
   - data
-# change
 # amount of pods
-replicas: 2
+replicas: 1
 minimumMasterNodes: 1
 
 # if not set, falls back to parsing .Values.imageTag, then .Chart.appVersion.
