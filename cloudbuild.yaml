@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/open-search-345216/helm'
     env:
-      - 'CLOUDSDK_COMPUTE_REGION=us-central1-c'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-2'
-      - 'GCLOUD_PROJECT=open-search-345216'
+      - CLOUDSDK_COMPUTE_REGION=us-central1-c
+      - CLOUDSDK_CONTAINER_CLUSTER=cluster-2
+      - GCLOUD_PROJECT=open-search-345216
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', 'd2.yaml']
