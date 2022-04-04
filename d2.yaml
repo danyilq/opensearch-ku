@@ -12,7 +12,7 @@ roles:
   - ingest
   - data
 
-
+# amount of pods
 replicas: 2
 minimumMasterNodes: 1
 
