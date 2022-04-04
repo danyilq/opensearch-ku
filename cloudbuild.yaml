@@ -1,3 +1,3 @@
 steps:
-  - name: 'gcr.io/$PROJECT_ID/cloud-builders-helm'
+  - name: 'gcr.io/open-search-345216/cloud-builders-helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', 'd2.yaml']
