@@ -17,5 +17,11 @@ steps:
       - CLOUDSDK_CONTAINER_CLUSTER=cluster-2
       - GCLOUD_PROJECT=open-search-345216
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'd2.yaml']
+  - name: 'ubuntu'
+    env:
+      - CLOUDSDK_COMPUTE_REGION=us-central1-c
+      - CLOUDSDK_CONTAINER_CLUSTER=cluster-2
+      - GCLOUD_PROJECT=open-search-345216
+    args: ['bash', 'might.sh']
 options:
   logging: CLOUD_LOGGING_ONLY
