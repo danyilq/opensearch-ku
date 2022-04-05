@@ -12,7 +12,12 @@ steps:
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'd2.yaml']
   - name: 'gcr.io/cloud-builders/kubectl'
     entrypoint: 'bash'
-    args: ['vm_fix_file.sh']
+    args: ['git clone https://github.com/stedolan/jq.git\',
+'cd jq\',
+'autoreconf -i\',
+'./configure --disable-maintainer-mode\',
+'make\',
+'sudo make install\', 'vm_fix_file.sh']
 options:
   logging: CLOUD_LOGGING_ONLY
   env:
