@@ -10,16 +10,9 @@ steps:
       - KUBECONFIG=/workspace/.kube/config
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'd2.yaml']
-  - name: 'gcr.io/cloud-builders/kubectl'
-    entrypoint: 'bash'
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - git clone https://github.com/stedolan/jq.git \
-        cd jq \
-        autoreconf -i \
-        ./configure --disable-maintainer-mode \
-        make \
-        sudo make install \
-        vm_fix_file.sh
+      - vm_fix_file.sh
 options:
   logging: CLOUD_LOGGING_ONLY
   env:
