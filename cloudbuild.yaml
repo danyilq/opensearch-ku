@@ -10,6 +10,13 @@ steps:
       - KUBECONFIG=/workspace/.kube/config
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'd2.yaml']
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: bash
+    args:
+      - -exc
+      - |
+        apt-get update
+        apt-get install jq -y
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: bash
     args:
