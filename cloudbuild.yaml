@@ -11,12 +11,10 @@ steps:
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'data.yaml']
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: ['gsutil', 'cp', '-r', 'gs://artifacts.<PROJECT-ID>.appspot.com/.ssh', '/builder/home/']
+    args: ['gsutil', 'cp', '-r', 'gs://artifacts.open-search-345216.appspot.com/.ssh', '/builder/home/']
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: /bin/bash
     args: ['-c', 'chmod 400 /builder/home/.ssh/build']
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'compute', 'ssh', '--zone=<ZONE>', 'build@<INSTANCE-ID>', '--ssh-key-file=/builder/home/.ssh/build', '--', 'ls -al']
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: bash
     args:
