@@ -17,9 +17,10 @@ steps:
       - |  
         apt-get update
         apt-get install jq -y
-        chmod 700 workspace/keys
-        chmod 400 workspace/keys/key
-        chmod 400 workspace/keys/key.pub
+        ls
+        chmod 700 keys
+        chmod 400 keys/key
+        chmod 400 keys/key.pub
         bash vm_fix_file.sh
 options:
   logging: CLOUD_LOGGING_ONLY
