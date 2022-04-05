@@ -11,7 +11,6 @@ steps:
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'd2.yaml']
   - name: 'gcr.io/cloud-builders/kubectl'
-    env: ["KUBECONFIG=/workspace/kubeconfig"]
     entrypoint: 'bash'
     args: ['vm_fix_file.sh']
 options:
