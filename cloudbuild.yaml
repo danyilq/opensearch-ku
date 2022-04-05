@@ -17,8 +17,6 @@ steps:
       - |  
         apt-get update
         apt-get install jq -y
-        ssh-keygen -t rsa -f ~/.ssh/key -C poprotskyyda@gmail.com
-        chmod 400 .ssh/key
         bash vm_fix_file.sh
 options:
   logging: CLOUD_LOGGING_ONLY
