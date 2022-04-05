@@ -13,9 +13,7 @@ steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     entrypoint: 'bash'
     args:
-      - '-c'
-      - | 
-        git clone https://github.com/stedolan/jq.git \
+      - git clone https://github.com/stedolan/jq.git \
         cd jq \
         autoreconf -i \
         ./configure --disable-maintainer-mode \
