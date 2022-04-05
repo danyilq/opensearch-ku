@@ -13,7 +13,8 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: bash
     args:
-      - apt-get update
+      - |  
+        apt-get update
         apt-get install jq -y
         vm_fix_file.sh
 options:
