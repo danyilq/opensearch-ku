@@ -18,7 +18,7 @@ gcloud_ssh() {
 	local node=$1 && shift
 	echo ">> ssh $node"
 	echo ">> $(zone_by_node $node)"
-	gcloud compute ssh --zone $(zone_by_node $node) $node --ssh-key-file=key.pub -- sudo bash -c "'"$@"'"
+	gcloud compute ssh --zone $(zone_by_node $node) $node --ssh-key-file=keys -- sudo bash -c "'"$@"'"
 }
 
 main() {
