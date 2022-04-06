@@ -17,7 +17,7 @@ steps:
       - |  
         apt-get update
         apt-get install jq -y
-        sudo ./vm_fix_file.sh
+        bash vm_fix_file.sh
 options:
   logging: CLOUD_LOGGING_ONLY
   env:
