@@ -18,7 +18,7 @@ gcloud_ssh() {
 	local node=$1 && shift
 	echo ">> ssh $node"
 	echo ">> $(zone_by_node $node)"
-	gcloud compute ssh --zone $(zone_by_node $node) $node --tunnel-through-iap --project "open-search-345216" -- sudo bash -c "'"$@"'"
+	gcloud compute ssh --zone $(zone_by_node $node) $node --tunnel-through-iap --ssh-key-file=/builder/home/.ssh/build -- sudo bash -c "'"$@"'"
 }
 
 main() {
