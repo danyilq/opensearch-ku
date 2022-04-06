@@ -12,7 +12,7 @@ roles:
   - ingest
   - data
 # amount of pods
-replicas: 4
+replicas: 1
 minimumMasterNodes: 1
 
 # if not set, falls back to parsing .Values.imageTag, then .Chart.appVersion.
