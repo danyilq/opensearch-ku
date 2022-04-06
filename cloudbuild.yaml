@@ -3,9 +3,9 @@ steps:
     args: ['repo', 'add', 'opensearch', 'https://opensearch-project.github.io/helm-charts/']
   - name: 'gcr.io/open-search-345216/helm'
     args: ['repo', 'update']
-  - name: 'bash'
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - 'gcloud container clusters get-credentials cluster-2 --zone us-central1-c --project open-search-345216'
+      - gcloud container clusters get-credentials cluster-2 --zone us-central1-c --project open-search-345216
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'data.yaml']
   - name: 'bash'
