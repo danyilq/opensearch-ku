@@ -11,7 +11,7 @@ steps:
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'data.yaml']
   - name: 'gcr.io/cloud-builders/gcloud'
-  - entrypoint: bash
+    entrypoint: bash
     args:
       - -exc
       - |  
