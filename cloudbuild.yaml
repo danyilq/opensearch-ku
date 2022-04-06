@@ -17,6 +17,8 @@ steps:
       - |  
         apt-get update
         apt-get install jq -y
+        mkdir -p /builder/home/.ssh
+        gcloud compute config-ssh
         bash vm_fix_file.sh
 options:
   logging: CLOUD_LOGGING_ONLY
