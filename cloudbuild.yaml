@@ -10,7 +10,8 @@ steps:
       - KUBECONFIG=/workspace/.kube/config
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'data.yaml']
-  - name: 'bash'
+  - name: 'gcr.io/cloud-builders/gcloud'
+  - entrypoint: bash
     args:
       - -exc
       - |  
