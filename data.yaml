@@ -343,7 +343,8 @@ readinessProbe:
 schedulerName: ""
 
 imagePullSecrets: []
-nodeSelector: {}
+nodeSelector:
+  cloud.google.com/gke-nodepool: data-nodes
 tolerations: []
 
 # Enabling this will publically expose your OpenSearch instance.
