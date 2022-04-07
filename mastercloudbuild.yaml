@@ -9,7 +9,7 @@ steps:
     env:
       - KUBECONFIG=/workspace/.kube/config
   - name: 'gcr.io/open-search-345216/helm'
-    args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'data.yaml']
+    args: ['upgrade', 'opensearch-master', 'opensearch/opensearch', '-f', 'master.yaml']
 options:
   logging: CLOUD_LOGGING_ONLY
   env:

@@ -24,7 +24,7 @@ gcloud_ssh() {
 main() {
 	for node in $(nodes); do
 		gcloud_ssh $node \
-			"sysctl -w vm.max_map_count=262144 && sysctl -n vm.max_map_count"
+			"sysctl -n vm.max_map_count && sysctl -w vm.max_map_count=262144 && sysctl -n vm.max_map_count"
 	done
 }
 

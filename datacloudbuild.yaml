@@ -10,14 +10,6 @@ steps:
       - KUBECONFIG=/workspace/.kube/config
   - name: 'gcr.io/open-search-345216/helm'
     args: ['upgrade', 'opensearch-data', 'opensearch/opensearch', '-f', 'data.yaml']
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: bash
-    args:
-      - -exc
-      - |  
-        apt-get update
-        apt-get install jq -y
-        bash vm_fix_file.sh
 options:
   logging: CLOUD_LOGGING_ONLY
   env:

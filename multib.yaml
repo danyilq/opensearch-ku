@@ -217,14 +217,14 @@ extraVolumeMounts: []
   #   readOnly: true
 
 extraContainers: []
-  # - name: do-something
-  #   image: busybox
-  #   command: ['do', 'something']
 
-extraInitContainers: []
-  # - name: do-somethings
-  #   image: busybox
-  #   command: ['do', 'something']
+extraInitContainers:
+  - name: sysctl
+    image: busybox
+    securityContext:
+      privileged: true
+      runAsUser: 0
+    command: [ 'sh', '-c', 'sysctl -w vm.max_map_count=262144' ]
 
 # This is the PriorityClass settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
