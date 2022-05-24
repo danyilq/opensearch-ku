@@ -1,10 +1,10 @@
 ---
-clusterName: "cluster"
+clusterName: "cluster-us-east-1a-1"
 nodeGroup: "master"
 
 # The service that non master groups will try to connect to when joining the cluster
 # This should be set to clusterName + "-" + nodeGroup for your master group
-masterService: "opensearch-cluster-master"
+masterService: "opensearch-cluster-master-us-east-1a-1"
 
 # OpenSearch roles that will be applied to this nodeGroup
 # These will be set as environment variable "node.roles". E.g. node.roles=master,ingest,data,remote_cluster_client
@@ -39,7 +39,7 @@ config:
   #   rootLogger.level = info
   #   rootLogger.appenderRef.console.ref = console
   opensearch.yml: |
-    cluster.name: cluster
+    cluster.name: cluster-us-east-1a-1
 
     # Bind to all interfaces because we don't know what IP address Docker will assign to us.
     network.host: 0.0.0.0
@@ -122,8 +122,7 @@ hostAliases: []
 image:
   repository: "opensearchproject/opensearch"
   # override image tag, which is .Chart.AppVersion by default
-  tag: ""
-  version: 1.2.3
+  tag: 1.2.3
   pullPolicy: "IfNotPresent"
 
 podAnnotations: {}
@@ -265,8 +264,7 @@ service:
   labelsHeadless: {}
   headless:
     annotations: {}
-  type: ClusterIP
-  nodePort: ""
+  type: LoadBalancer
   annotations: {}
   httpPortName: http
   transportPortName: transport
@@ -342,7 +340,8 @@ readinessProbe:
 schedulerName: ""
 
 imagePullSecrets: []
-nodeSelector: {}
+nodeSelector:
+  kops.k8s.io/instancegroup: master-nodes-us-east-1a-1
 tolerations: []
 
 # Enabling this will publically expose your OpenSearch instance.
@@ -351,11 +350,11 @@ ingress:
   enabled: false
   # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
   # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
-  # ingressClassName: nginx
+#  ingressClassName: nginx
 
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+#     kubernetes.io/ingress.class: nginx
+#     kubernetes.io/tls-acme: "true"
   path: /
   hosts:
     - chart-example.local
@@ -397,9 +396,8 @@ networkPolicy:
   ## In order for a Pod to access OpenSearch, it needs to have the following label:
   ## {{ template "uname" . }}-client: "true"
   ## Example for default configuration to access HTTP port:
-  ## opensearch-master-http-client: "true"
-  ## Example for default configuration to access transport port:
-  ## opensearch-master-transport-client: "true"
+##  opensearch-master-http-client: "true"
+##  opensearch-master-transport-client: "true"
 
   http:
     enabled: false
