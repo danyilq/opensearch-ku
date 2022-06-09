@@ -1,10 +1,10 @@
 ---
-clusterName: "cluster-us-east-1a-1"
+clusterName: "cluster-us-east-1"
 nodeGroup: "master"
 
 # The service that non master groups will try to connect to when joining the cluster
 # This should be set to clusterName + "-" + nodeGroup for your master group
-masterService: "opensearch-cluster-master-us-east-1a-1"
+masterService: "opensearch-cluster-master-us-east-1"
 
 # OpenSearch roles that will be applied to this nodeGroup
 # These will be set as environment variable "node.roles". E.g. node.roles=master,ingest,data,remote_cluster_client
@@ -39,7 +39,7 @@ config:
   #   rootLogger.level = info
   #   rootLogger.appenderRef.console.ref = console
   opensearch.yml: |
-    cluster.name: cluster-us-east-1a-1
+    cluster.name: cluster-us-east-1
 
     # Bind to all interfaces because we don't know what IP address Docker will assign to us.
     network.host: 0.0.0.0
@@ -264,7 +264,7 @@ service:
   labelsHeadless: {}
   headless:
     annotations: {}
-  type: LoadBalancer
+  type: ClusterIP
   annotations: {}
   httpPortName: http
   transportPortName: transport
@@ -341,7 +341,7 @@ schedulerName: ""
 
 imagePullSecrets: []
 nodeSelector:
-  kops.k8s.io/instancegroup: master-nodes-us-east-1a-1
+  kops.k8s.io/instancegroup: master-nodes-us-east-1
 tolerations: []
 
 # Enabling this will publically expose your OpenSearch instance.
