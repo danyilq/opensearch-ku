@@ -13,7 +13,7 @@ roles:
   - data
 # amount of pods
 replicas: 3
-minimumMasterNodes: 1
+minimumDataNodes: 1
 
 # if not set, falls back to parsing .Values.imageTag, then .Chart.appVersion.
 majorVersion: ""
@@ -132,7 +132,7 @@ podAnnotations: {}
 # additionals labels
 labels: {}
 
-opensearchJavaOpts: "-Xmx512M -Xms512M"
+opensearchJavaOpts: "-Xmx16384M -Xms16384M"
 
 resources:
   requests:
@@ -267,8 +267,8 @@ service:
     annotations: {}
   type: LoadBalancer
   nodePort: ""
-  annotations:
-    kubernetes.io/loadbalance-type: application
+  annotations: {service.beta.kubernetes.io/aws-load-balancer-internal: "true",
+                service.beta.kubernetes.io/aws-load-balancer-type: "nlb"}
   httpPortName: http
   transportPortName: transport
   loadBalancerIP: ""
@@ -418,9 +418,9 @@ sysctl:
 
 ## Enable to add 3rd Party / Custom plugins not offered in the default OpenSearch image.
 plugins:
-  enabled: false
-  installList: []
-  # - example-fake-plugin
+  enabled: true
+  installList:
+  - repository-s3
 
 # -- Array of extra K8s manifests to deploy
 extraObjects: []

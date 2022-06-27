@@ -131,7 +131,7 @@ podAnnotations: {}
 # additionals labels
 labels: {}
 
-opensearchJavaOpts: "-Xmx512M -Xms512M"
+opensearchJavaOpts: "-Xmx2048M -Xms2048M"
 
 resources:
   requests:
@@ -265,6 +265,7 @@ service:
   headless:
     annotations: {}
   type: ClusterIP
+  nodePort: ""
   annotations: {}
   httpPortName: http
   transportPortName: transport
@@ -414,9 +415,9 @@ sysctl:
 
 ## Enable to add 3rd Party / Custom plugins not offered in the default OpenSearch image.
 plugins:
-  enabled: false
-  installList: []
-  # - example-fake-plugin
+  enabled: true
+  installList:
+  - repository-s3
 
 # -- Array of extra K8s manifests to deploy
 extraObjects: []
